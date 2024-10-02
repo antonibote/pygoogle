@@ -97,7 +97,7 @@ class GSearch:
                 return {"start": start, "query": query, "status": code}
 
             # Parse the response and process every anchored URL.
-            soup = BeautifulSoup(html)
+            soup = BeautifulSoup(html, features="lxml")
             total_num = int(self.NUM_RE.findall(soup.select("#resultStats")[0].text)[0].replace(",",""))
             if havent_yield:
                 yield total_num
